@@ -1,0 +1,17 @@
+baseURL = 'https://thousandthstar.github.io/'
+languageCode = 'en-us'
+title = "ThousandthStar's blog"
+theme = "PaperMod"
+
+[params.homeInfoParams]
+Title = "Hi there 👋"
+Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/ThousandthStar"
+
+[[params.socialIcons]]
+name = "reddit"
+url = "https://www.reddit.com/user/ThousandthStar"
+
