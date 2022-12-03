@@ -2,6 +2,7 @@ baseURL = 'https://thousandthstar.github.io/'
 languageCode = 'en-us'
 title = "ThousandthStar's blog"
 theme = "PaperMod"
+googleAnalytics = "G-ZP55MZZT7E"
 
 [params.homeInfoParams]
 Title = "Hi there 👋"

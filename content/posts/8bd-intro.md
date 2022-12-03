@@ -36,4 +36,3 @@ In my weekly posts, I plan to cover my weekly progress on my game, as well as a 
 ![Modal editing](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/abl6whibzuuwm9hvql6y.jpg)
 
 That about wraps up my first ever blog post! Thank you for reading, and I will see you in the next one!
-
