@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = "ThousandthStar's blog"
 theme = "PaperMod"
 googleAnalytics = "G-ZP55MZZT7E"
+disqusShortname = 'thousandthstar-github-io'
 
 [params.homeInfoParams]
 Title = "Hi there 👋"
