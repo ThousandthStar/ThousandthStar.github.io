@@ -41,22 +41,22 @@ One interesting mechanic this brings is the possibility to make troops that requ
 Another possibility would be to add a card ability that would increase your total number of troops.
 The other currency in my game will be the number of spirits. These are used to buy troops.
 The initial concept behind them was the idea that you would make pawns become alive by being infused with spirits.
-The more powerful the troop, the more spirits it needs to be spawned. Also, when you defeat an ennemy troop, you gain half of the spirits that were spent to spawn that troop, rounded down to an integer.
+The more powerful the troop, the more spirits it needs to be spawned. Also, when you defeat an enemy troop, you gain half of the spirits that were spent to spawn that troop, rounded down to an integer.
 Players also gain one spirit every turn.
 
 #### Troop Abilities
 
 To make the gameplay more interesting, I added these new abilities (they haven't been fully implemented yet):
 
-* **Spirit Collector**: When the troop that has this ability defeats an ennemy, the player receives all of the spirits spent to spawn the ennemy, instead of half.
+* **Spirit Collector**: When the troop that has this ability defeats an enemy, the player receives all of the spirits spent to spawn the enemy, instead of half.
 * **Multi Attack**: When a troop has this ability, it can attack multiple times per turn (the amount of maximum attacks changes per troop).
-* **Stun**: This troop has the ability to stun ennemy troops when attacking them.
+* **Stun**: This troop has the ability to stun enemy troops when attacking them.
 
-There are many more abilities to come (suggestions in the newly added Disqus comment section are always welcome).
+There are many more abilities to come.
 
 #### Troops
 
-* **Skeleton**: The skeleton got a new sprite, which looks like this: 
+##### **Skeleton**: The skeleton got a new sprite, which looks like this: 
 
 ![skeleton](/static/skeleton.png)
 
@@ -67,7 +67,7 @@ Here are the stats for the skeleton:
 * **Spirit Cost**: 2
 * **Abilities** None
 
-* **Reaper**: Here is the new reaper!
+##### **Reaper**: Here is the new reaper!
 
 ![reaper](/static/reaper.png)
 
@@ -78,7 +78,7 @@ Here are his stats:
 * **Spirit Cost**: 5
 * **Abilities**: Spirit Collector
 
-* **Kraken**: Here is the new kraken!
+##### **Kraken**: Here is the new kraken!
 
 ![kraken](/static/kraken.png)
 
@@ -89,7 +89,7 @@ Here are its stats:
 * **Spirit Cost**: 5
 * **Abilities**: Multi Attack 3
 
-* **Spider**: Here is the new spider!
+##### **Spider**: Here is the new spider!
 
 ![spider](/static/spider.png)
 
