@@ -1,13 +1,303 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>8bit Duels Devlog Intro | ThousandthStar's blog</title><meta name=keywords content><meta name=description content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>8bit Duels Devlog Intro | ThousandthStar&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
 Below is what I&rsquo;ll explore in this post: What I&rsquo;m making: in this section, I&rsquo;ll tell a bit more about what kind of game I&rsquo;m making as well as what are my expectations and goals for this project.
-Language and tools: I will cover the technology stack behind my game."><meta name=author content><link rel=canonical href=https://thousandthstar.github.io/posts/8bd-intro/><link crossorigin=anonymous href=/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://thousandthstar.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thousandthstar.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://thousandthstar.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://thousandthstar.github.io/apple-touch-icon.png><link rel=mask-icon href=https://thousandthstar.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP55MZZT7E"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-ZP55MZZT7E",{anonymize_ip:!1})}</script><meta property="og:title" content="8bit Duels Devlog Intro"><meta property="og:description" content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
+Language and tools: I will cover the technology stack behind my game.">
+<meta name="author" content="">
+<link rel="canonical" href="https://thousandthstar.github.io/posts/8bd-intro/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://thousandthstar.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://thousandthstar.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://thousandthstar.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://thousandthstar.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://thousandthstar.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP55MZZT7E"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZP55MZZT7E', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="8bit Duels Devlog Intro" />
+<meta property="og:description" content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
 Below is what I&rsquo;ll explore in this post: What I&rsquo;m making: in this section, I&rsquo;ll tell a bit more about what kind of game I&rsquo;m making as well as what are my expectations and goals for this project.
-Language and tools: I will cover the technology stack behind my game."><meta property="og:type" content="article"><meta property="og:url" content="https://thousandthstar.github.io/posts/8bd-intro/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-02T17:54:09-05:00"><meta property="article:modified_time" content="2022-12-02T17:54:09-05:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="8bit Duels Devlog Intro"><meta name=twitter:description content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
+Language and tools: I will cover the technology stack behind my game." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thousandthstar.github.io/posts/8bd-intro/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-02T17:54:09-05:00" />
+<meta property="article:modified_time" content="2022-12-02T17:54:09-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="8bit Duels Devlog Intro"/>
+<meta name="twitter:description" content="Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.
 Below is what I&rsquo;ll explore in this post: What I&rsquo;m making: in this section, I&rsquo;ll tell a bit more about what kind of game I&rsquo;m making as well as what are my expectations and goals for this project.
-Language and tools: I will cover the technology stack behind my game."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://thousandthstar.github.io/posts/"},{"@type":"ListItem","position":2,"name":"8bit Duels Devlog Intro","item":"https://thousandthstar.github.io/posts/8bd-intro/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"8bit Duels Devlog Intro","name":"8bit Duels Devlog Intro","description":"Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.\nBelow is what I\u0026rsquo;ll explore in this post: What I\u0026rsquo;m making: in this section, I\u0026rsquo;ll tell a bit more about what kind of game I\u0026rsquo;m making as well as what are my expectations and goals for this project.\nLanguage and tools: I will cover the technology stack behind my game.","keywords":[],"articleBody":"Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.\nBelow is what I’ll explore in this post: What I’m making: in this section, I’ll tell a bit more about what kind of game I’m making as well as what are my expectations and goals for this project.\nLanguage and tools: I will cover the technology stack behind my game. This includes the programming language and the game engine as well as how the game will work. I will also cover the code editor I’m using.\nMy schedule: I’ll explain briefly what my expectations are regarding post frequency.\nThe content. I’ll detail what my posts will include.\nWithout any further ado, let’s get started!\nWhat I’m making I’m making a multiplayer turn-based game. The game is inspired by chess, because you will be able to move your troops across the board, but it is more heavily inspired by Clash Mini, a game from Supercell (link to the clash website). With this project, I aim to learn more about game development. I also hope to discover the wonderful (or rather awful) world of networking and all the bugs that will come with it. There is no deadline for the game, as progress is very slow and inconsistent. In the end, I hope to make the code open source, depending on how proud of it I am 😅.\nWhat I’m using I’m using Rust for this project, along with the Bevy game engine (an amazing open source ECS game engine that you can find here). I am currently coding a server from scratch using, you guessed it, Rust. Currently, there is only one server for all the clients, but this game is more of a proof-of-concept than a game I consider will actually get a player base. However, things are subject to change in the future. To edit code, I use Vim (which I’ve just started using but already adore) with Rust-Analyzer and coc.nvim, which are a must for Rust development.\nMy schedule As mentioned before, progress on the game is very slow, as it is only a side project and is not on my list of priorities. I do plan on making a post per week regarding the game, though this is subject to change. These posts will come during the weekend, but the schedule is subject to change and I may of course miss some weekly posts. This is more of a way to document my game development experience instead of a serious content series. However, I will appreciate any comments and interaction if you, the reader, is interested.\nMy content In my weekly posts, I plan to cover my weekly progress on my game, as well as a dive into some of the code. I will also show small sneak peaks in the form of images or videos. Finally, I will try to include a programming related meme that I made in each of my posts. I usually also post these on Reddit here. This is this post’s one: That about wraps up my first ever blog post! Thank you for reading, and I will see you in the next one!\n","wordCount":"541","inLanguage":"en","datePublished":"2022-12-02T17:54:09-05:00","dateModified":"2022-12-02T17:54:09-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://thousandthstar.github.io/posts/8bd-intro/"},"publisher":{"@type":"Organization","name":"ThousandthStar's blog","logo":{"@type":"ImageObject","url":"https://thousandthstar.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://thousandthstar.github.io/ accesskey=h title="ThousandthStar's blog (Alt + H)">ThousandthStar's blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>8bit Duels Devlog Intro</h1><div class=post-meta><span title='2022-12-02 17:54:09 -0500 -0500'>December 2, 2022</span></div></header><div class=post-content><p>Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.</p><h2 id=below-is-what-ill-explore-in-this-post>Below is what I&rsquo;ll explore in this post:<a hidden class=anchor aria-hidden=true href=#below-is-what-ill-explore-in-this-post>#</a></h2><ul><li><p>What I&rsquo;m making: in this section, I&rsquo;ll tell a bit more about what kind of game I&rsquo;m making as well as what are my expectations and goals for this project.</p></li><li><p>Language and tools: I will cover the technology stack behind my game. This includes the programming language and the game engine as well as how the game will work. I will also cover the code editor I&rsquo;m using.</p></li><li><p>My schedule: I&rsquo;ll explain briefly what my expectations are regarding post frequency.</p></li><li><p>The content. I&rsquo;ll detail what my posts will include.</p></li></ul><p>Without any further ado, let&rsquo;s get started!</p><h2 id=what-im-making>What I&rsquo;m making<a hidden class=anchor aria-hidden=true href=#what-im-making>#</a></h2><p>I&rsquo;m making a multiplayer turn-based game. The game is inspired by chess, because you will be able to move your troops across the board, but it is more heavily inspired by Clash Mini, a game from Supercell (<a href=https://clash.com>link to the clash website</a>). With this project, I aim to learn more about game development. I also hope to discover the wonderful (or rather awful) world of networking and all the bugs that will come with it. There is no deadline for the game, as progress is very slow and inconsistent. In the end, I hope to make the code open source, depending on how proud of it I am 😅.</p><h2 id=what-im-using>What I&rsquo;m using<a hidden class=anchor aria-hidden=true href=#what-im-using>#</a></h2><p>I&rsquo;m using Rust for this project, along with the Bevy game engine (an amazing open source ECS game engine that you can find <a href=https://bevyengine.org>here</a>). I am currently coding a server from scratch using, you guessed it, Rust. Currently, there is only one server for all the clients, but this game is more of a proof-of-concept than a game I consider will actually get a player base. However, things are subject to change in the future. To edit code, I use Vim (which I&rsquo;ve just started using but already adore) with Rust-Analyzer and coc.nvim, which are a must for Rust development.</p><h2 id=my-schedule>My schedule<a hidden class=anchor aria-hidden=true href=#my-schedule>#</a></h2><p>As mentioned before, progress on the game is very slow, as it is only a side project and is not on my list of priorities. I do plan on making a post per week regarding the game, though this is subject to change. These posts will come during the weekend, but the schedule is subject to change and I may of course miss some weekly posts. This is more of a way to document my game development experience instead of a serious content series. However, I will appreciate any comments and interaction if you, the reader, is interested.</p><h2 id=my-content>My content<a hidden class=anchor aria-hidden=true href=#my-content>#</a></h2><p>In my weekly posts, I plan to cover my weekly progress on my game, as well as a dive into some of the code. I will also show small sneak peaks in the form of images or videos. Finally, I will try to include a programming related meme that I made in each of my posts. I usually also post these on Reddit <a href=https://www.reddit.com/r/ProgrammerHumor/>here</a>. This is this post&rsquo;s one:
-<img loading=lazy src=https://dev-to-uploads.s3.amazonaws.com/uploads/articles/abl6whibzuuwm9hvql6y.jpg alt="Modal editing"></p><p>That about wraps up my first ever blog post! Thank you for reading, and I will see you in the next one!</p></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://thousandthstar.github.io/>ThousandthStar's blog</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+Language and tools: I will cover the technology stack behind my game."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://thousandthstar.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "8bit Duels Devlog Intro",
+      "item": "https://thousandthstar.github.io/posts/8bd-intro/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "8bit Duels Devlog Intro",
+  "name": "8bit Duels Devlog Intro",
+  "description": "Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.\nBelow is what I\u0026rsquo;ll explore in this post: What I\u0026rsquo;m making: in this section, I\u0026rsquo;ll tell a bit more about what kind of game I\u0026rsquo;m making as well as what are my expectations and goals for this project.\nLanguage and tools: I will cover the technology stack behind my game.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.\nBelow is what I’ll explore in this post: What I’m making: in this section, I’ll tell a bit more about what kind of game I’m making as well as what are my expectations and goals for this project.\nLanguage and tools: I will cover the technology stack behind my game. This includes the programming language and the game engine as well as how the game will work. I will also cover the code editor I’m using.\nMy schedule: I’ll explain briefly what my expectations are regarding post frequency.\nThe content. I’ll detail what my posts will include.\nWithout any further ado, let’s get started!\nWhat I’m making I’m making a multiplayer turn-based game. The game is inspired by chess, because you will be able to move your troops across the board, but it is more heavily inspired by Clash Mini, a game from Supercell (link to the clash website). With this project, I aim to learn more about game development. I also hope to discover the wonderful (or rather awful) world of networking and all the bugs that will come with it. There is no deadline for the game, as progress is very slow and inconsistent. In the end, I hope to make the code open source, depending on how proud of it I am 😅.\nWhat I’m using I’m using Rust for this project, along with the Bevy game engine (an amazing open source ECS game engine that you can find here). I am currently coding a server from scratch using, you guessed it, Rust. Currently, there is only one server for all the clients, but this game is more of a proof-of-concept than a game I consider will actually get a player base. However, things are subject to change in the future. To edit code, I use Vim (which I’ve just started using but already adore) with Rust-Analyzer and coc.nvim, which are a must for Rust development.\nMy schedule As mentioned before, progress on the game is very slow, as it is only a side project and is not on my list of priorities. I do plan on making a post per week regarding the game, though this is subject to change. These posts will come during the weekend, but the schedule is subject to change and I may of course miss some weekly posts. This is more of a way to document my game development experience instead of a serious content series. However, I will appreciate any comments and interaction if you, the reader, is interested.\nMy content In my weekly posts, I plan to cover my weekly progress on my game, as well as a dive into some of the code. I will also show small sneak peaks in the form of images or videos. Finally, I will try to include a programming related meme that I made in each of my posts. I usually also post these on Reddit here. This is this post’s one: That about wraps up my first ever blog post! Thank you for reading, and I will see you in the next one!\n",
+  "wordCount" : "541",
+  "inLanguage": "en",
+  "datePublished": "2022-12-02T17:54:09-05:00",
+  "dateModified": "2022-12-02T17:54:09-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://thousandthstar.github.io/posts/8bd-intro/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ThousandthStar's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thousandthstar.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://thousandthstar.github.io/" accesskey="h" title="ThousandthStar&#39;s blog (Alt + H)">ThousandthStar&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      8bit Duels Devlog Intro
+    </h1>
+    <div class="post-meta"><span title='2022-12-02 17:54:09 -0500 EST'>December 2, 2022</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hello readers! This is a short post introducing my first blog series, where I will document my process creating a multiplayer turn-based game. The game is not named yet.</p>
+<h2 id="below-is-what-ill-explore-in-this-post">Below is what I&rsquo;ll explore in this post:<a hidden class="anchor" aria-hidden="true" href="#below-is-what-ill-explore-in-this-post">#</a></h2>
+<ul>
+<li>
+<p>What I&rsquo;m making: in this section, I&rsquo;ll tell a bit more about what kind of game I&rsquo;m making as well as what are my expectations and goals for this project.</p>
+</li>
+<li>
+<p>Language and tools: I will cover the technology stack behind my game. This includes the programming language and the game engine as well as how the game will work. I will also cover the code editor I&rsquo;m using.</p>
+</li>
+<li>
+<p>My schedule: I&rsquo;ll explain briefly what my expectations are regarding post frequency.</p>
+</li>
+<li>
+<p>The content. I&rsquo;ll detail what my posts will include.</p>
+</li>
+</ul>
+<p>Without any further ado, let&rsquo;s get started!</p>
+<h2 id="what-im-making">What I&rsquo;m making<a hidden class="anchor" aria-hidden="true" href="#what-im-making">#</a></h2>
+<p>I&rsquo;m making a multiplayer turn-based game. The game is inspired by chess, because you will be able to move your troops across the board, but it is more heavily inspired by Clash Mini, a game from Supercell (<a href="https://clash.com">link to the clash website</a>). With this project, I aim to learn more about game development. I also hope to discover the wonderful (or rather awful) world of networking and all the bugs that will come with it. There is no deadline for the game, as progress is very slow and inconsistent. In the end, I hope to make the code open source, depending on how proud of it I am 😅.</p>
+<h2 id="what-im-using">What I&rsquo;m using<a hidden class="anchor" aria-hidden="true" href="#what-im-using">#</a></h2>
+<p>I&rsquo;m using Rust for this project, along with the Bevy game engine (an amazing open source ECS game engine that you can find <a href="https://bevyengine.org">here</a>). I am currently coding a server from scratch using, you guessed it, Rust. Currently, there is only one server for all the clients, but this game is more of a proof-of-concept than a game I consider will actually get a player base. However, things are subject to change in the future. To edit code, I use Vim (which I&rsquo;ve just started using but already adore) with Rust-Analyzer and coc.nvim, which are a must for Rust development.</p>
+<h2 id="my-schedule">My schedule<a hidden class="anchor" aria-hidden="true" href="#my-schedule">#</a></h2>
+<p>As mentioned before, progress on the game is very slow, as it is only a side project and is not on my list of priorities. I do plan on making a post per week regarding the game, though this is subject to change. These posts will come during the weekend, but the schedule is subject to change and I may of course miss some weekly posts. This is more of a way to document my game development experience instead of a serious content series. However, I will appreciate any comments and interaction if you, the reader, is interested.</p>
+<h2 id="my-content">My content<a hidden class="anchor" aria-hidden="true" href="#my-content">#</a></h2>
+<p>In my weekly posts, I plan to cover my weekly progress on my game, as well as a dive into some of the code. I will also show small sneak peaks in the form of images or videos. Finally, I will try to include a programming related meme that I made in each of my posts. I usually also post these on Reddit <a href="https://www.reddit.com/r/ProgrammerHumor/">here</a>. This is this post&rsquo;s one:
+<img loading="lazy" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/abl6whibzuuwm9hvql6y.jpg" alt="Modal editing"  />
+</p>
+<p>That about wraps up my first ever blog post! Thank you for reading, and I will see you in the next one!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://thousandthstar.github.io/">ThousandthStar&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
