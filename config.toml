@@ -7,7 +7,7 @@ disqusShortname = 'thousandthstar-github-io'
 
 [params.homeInfoParams]
 Title = "Hi there 👋"
-Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels."
+Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels. Contact me on Discord: ThousandthStar#1621"
 
 [[params.socialIcons]]
 name = "github"
@@ -17,3 +17,5 @@ url = "https://github.com/ThousandthStar"
 name = "reddit"
 url = "https://www.reddit.com/user/ThousandthStar"
 
+[markup.goldmark.renderer]
+unsafe= true

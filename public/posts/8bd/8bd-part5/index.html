@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>8bit Duels Devlog Part 5 | ThousandthStar&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game. It&rsquo;s been a while since I made a devlog, so there&rsquo;s quite a bit to unpack here. Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game! There&rsquo;s been quite a bit of progress made in the code as well.">
+<meta name="author" content="">
+<link rel="canonical" href="https://thousandthstar.github.io/posts/8bd/8bd-part5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://thousandthstar.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://thousandthstar.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://thousandthstar.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://thousandthstar.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://thousandthstar.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP55MZZT7E"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZP55MZZT7E', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="8bit Duels Devlog Part 5" />
+<meta property="og:description" content="👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game. It&rsquo;s been a while since I made a devlog, so there&rsquo;s quite a bit to unpack here. Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game! There&rsquo;s been quite a bit of progress made in the code as well." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thousandthstar.github.io/posts/8bd/8bd-part5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-02T22:19:57+01:00" />
+<meta property="article:modified_time" content="2023-01-02T22:19:57+01:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="8bit Duels Devlog Part 5"/>
+<meta name="twitter:description" content="👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game. It&rsquo;s been a while since I made a devlog, so there&rsquo;s quite a bit to unpack here. Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game! There&rsquo;s been quite a bit of progress made in the code as well."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://thousandthstar.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "8bit Duels Devlog Part 5",
+      "item": "https://thousandthstar.github.io/posts/8bd/8bd-part5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "8bit Duels Devlog Part 5",
+  "name": "8bit Duels Devlog Part 5",
+  "description": "👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game. It\u0026rsquo;s been a while since I made a devlog, so there\u0026rsquo;s quite a bit to unpack here. Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game! There\u0026rsquo;s been quite a bit of progress made in the code as well.",
+  "keywords": [
+    
+  ],
+  "articleBody": "👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game. It’s been a while since I made a devlog, so there’s quite a bit to unpack here. Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game! There’s been quite a bit of progress made in the code as well. Without any further ado, let’s get into it!\nAnnouncements Testing Community I knewly created a Discord server (link) for anyone interested in testing the game. There, I will post updates on the development of 8bit Duels, and I’ll set a server up when the game will be in MVP stage. The game is almost ready to be played, so join if you want to be notified of that!\nNew Artist One of my friends agreed to make pixel art for my game! He is way more talented than me, so the art is much better and detailed with his help. You will see more of his work down below.\nPrioritizing Gameplay After I left off the devlog last time, I started working on the game’s UI. However, this just detracted me from the gameplay coding. I also had issues with the UI library I was using, and wasn’t making any real progress. However, once I started focusing more on the gameplay, things started to pick up rapidly.\nGameplay Elements Since my last devlog, I have added many things, the most important of which being the turn system. Now, players each take turns placing troops, moving them and attacking with them. I also added the ability to spawn troops, and to win the game with them (if the are on the last row of the board and have the ability to move, then you can use them to win the game). When a player spawns troops, it is automatically stunned for one turn. While stunned, it can’t attack or move.\nI also added the two game currencies. The first is the number of pawns, which determines how many troops a single player can have on the board at the same time. When placing a troop, you loose one pawn. When one of your troops dies, you gain one. One interesting mechanic this brings is the possibility to make troops that require more than one pawn to be placed, and they might be more powerful. Another possibility would be to add a card ability that would increase your total number of troops. The other currency in my game will be the number of spirits. These are used to buy troops. The initial concept behind them was the idea that you would make pawns become alive by being infused with spirits. The more powerful the troop, the more spirits it needs to be spawned. Also, when you defeat an enemy troop, you gain half of the spirits that were spent to spawn that troop, rounded down to an integer. Players also gain one spirit every turn.\nTroop Abilities To make the gameplay more interesting, I added these new abilities (they haven’t been fully implemented yet):\nSpirit Collector: When the troop that has this ability defeats an enemy, the player receives all of the spirits spent to spawn the enemy, instead of half. Multi Attack: When a troop has this ability, it can attack multiple times per turn (the amount of maximum attacks changes per troop). Stun: This troop has the ability to stun enemy troops when attacking them. There are many more abilities to come.\nTroops Skeleton: The skeleton got a new sprite, which looks like this: Here are the stats for the skeleton:\nHealth Points: 5 Attack Damage: 3 Spirit Cost: 2 Abilities None Reaper: Here is the new reaper! Here are his stats:\nHealth Points: 6 Attack Damage: 4 Spirit Cost: 5 Abilities: Spirit Collector Kraken: Here is the new kraken! Here are its stats:\nHealth Points: 12 Attack Damage: 1 Spirit Cost: 5 Abilities: Multi Attack 3 Spider: Here is the new spider! Here are its stats:\nHealth Points: 4 Attack Damage: 2 Spirit Cost: 4 Abilities: Stun 1 Conclusion If you’ve read this far, thank you! This devlog was pretty long, and I think I will no longer be showing snippets of code in the future. The code, as always, is available on Github. That is all for me, I will see you in the next one!\n",
+  "wordCount" : "745",
+  "inLanguage": "en",
+  "datePublished": "2023-01-02T22:19:57+01:00",
+  "dateModified": "2023-01-02T22:19:57+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://thousandthstar.github.io/posts/8bd/8bd-part5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ThousandthStar's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thousandthstar.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://thousandthstar.github.io/" accesskey="h" title="ThousandthStar&#39;s blog (Alt + H)">ThousandthStar&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      8bit Duels Devlog Part 5
+    </h1>
+    <div class="post-meta"><span title='2023-01-02 22:19:57 +0100 +0100'>January 2, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>👋 Hi again! This is part 5 of my devlog where I code my multiplayer turn-based strategy game.
+It&rsquo;s been a while since I made a devlog, so there&rsquo;s quite a bit to unpack here.
+Priorities have changed for the better, gameplay mechanics have been established, a community chat has been created, and an artist has joined forces with me to create the game!
+There&rsquo;s been quite a bit of progress made in the code as well. Without any further ado, let&rsquo;s get into it!</p>
+<h3 id="announcements">Announcements<a hidden class="anchor" aria-hidden="true" href="#announcements">#</a></h3>
+<ul>
+<li>
+<h4 id="testing-community">Testing Community<a hidden class="anchor" aria-hidden="true" href="#testing-community">#</a></h4>
+</li>
+</ul>
+<p>I knewly created a Discord server (<a href="https://discord.gg/NbBcF4bGU5">link</a>) for anyone interested in testing the game.
+There, I will post updates on the development of 8bit Duels, and I&rsquo;ll set a server up when the game will be in MVP stage.
+The game is almost ready to be played, so join if you want to be notified of that!</p>
+<ul>
+<li>
+<h4 id="new-artist">New Artist<a hidden class="anchor" aria-hidden="true" href="#new-artist">#</a></h4>
+</li>
+</ul>
+<p>One of my friends agreed to make pixel art for my game! He is way more talented than me, so the art is much better and detailed with his help.
+You will see more of his work down below.</p>
+<h3 id="prioritizing-gameplay">Prioritizing Gameplay<a hidden class="anchor" aria-hidden="true" href="#prioritizing-gameplay">#</a></h3>
+<p>After I left off the devlog last time, I started working on the game&rsquo;s UI. However, this just detracted me from the gameplay coding.
+I also had issues with the UI library I was using, and wasn&rsquo;t making any real progress.
+However, once I started focusing more on the gameplay, things started to pick up rapidly.</p>
+<h3 id="gameplay-elements">Gameplay Elements<a hidden class="anchor" aria-hidden="true" href="#gameplay-elements">#</a></h3>
+<p>Since my last devlog, I have added many things, the most important of which being the turn system.
+Now, players each take turns placing troops, moving them and attacking with them.
+I also added the ability to spawn troops, and to win the game with them (if the are on the last row of the board and have the ability to move, then you can use them to win the game).
+When a player spawns troops, it is automatically stunned for one turn. While stunned, it can&rsquo;t attack or move.</p>
+<p>I also added the two game currencies. The first is the number of pawns, which determines how many troops a single player can have on the board at the same time.
+When placing a troop, you loose one pawn. When one of your troops dies, you gain one.
+One interesting mechanic this brings is the possibility to make troops that require more than one pawn to be placed, and they might be more powerful.
+Another possibility would be to add a card ability that would increase your total number of troops.
+The other currency in my game will be the number of spirits. These are used to buy troops.
+The initial concept behind them was the idea that you would make pawns become alive by being infused with spirits.
+The more powerful the troop, the more spirits it needs to be spawned. Also, when you defeat an enemy troop, you gain half of the spirits that were spent to spawn that troop, rounded down to an integer.
+Players also gain one spirit every turn.</p>
+<h4 id="troop-abilities">Troop Abilities<a hidden class="anchor" aria-hidden="true" href="#troop-abilities">#</a></h4>
+<p>To make the gameplay more interesting, I added these new abilities (they haven&rsquo;t been fully implemented yet):</p>
+<ul>
+<li><strong>Spirit Collector</strong>: When the troop that has this ability defeats an enemy, the player receives all of the spirits spent to spawn the enemy, instead of half.</li>
+<li><strong>Multi Attack</strong>: When a troop has this ability, it can attack multiple times per turn (the amount of maximum attacks changes per troop).</li>
+<li><strong>Stun</strong>: This troop has the ability to stun enemy troops when attacking them.</li>
+</ul>
+<p>There are many more abilities to come.</p>
+<h4 id="troops">Troops<a hidden class="anchor" aria-hidden="true" href="#troops">#</a></h4>
+<h5 id="skeleton-the-skeleton-got-a-new-sprite-which-looks-like-this"><strong>Skeleton</strong>: The skeleton got a new sprite, which looks like this:<a hidden class="anchor" aria-hidden="true" href="#skeleton-the-skeleton-got-a-new-sprite-which-looks-like-this">#</a></h5>
+<p><img loading="lazy" src="/static/skeleton.png" alt="skeleton"  />
+</p>
+<p>Here are the stats for the skeleton:</p>
+<ul>
+<li><strong>Health Points</strong>: 5</li>
+<li><strong>Attack Damage</strong>: 3</li>
+<li><strong>Spirit Cost</strong>: 2</li>
+<li><strong>Abilities</strong> None</li>
+</ul>
+<h5 id="reaper-here-is-the-new-reaper"><strong>Reaper</strong>: Here is the new reaper!<a hidden class="anchor" aria-hidden="true" href="#reaper-here-is-the-new-reaper">#</a></h5>
+<p><img loading="lazy" src="/static/reaper.png" alt="reaper"  />
+</p>
+<p>Here are his stats:</p>
+<ul>
+<li><strong>Health Points</strong>: 6</li>
+<li><strong>Attack Damage</strong>: 4</li>
+<li><strong>Spirit Cost</strong>: 5</li>
+<li><strong>Abilities</strong>: Spirit Collector</li>
+</ul>
+<h5 id="kraken-here-is-the-new-kraken"><strong>Kraken</strong>: Here is the new kraken!<a hidden class="anchor" aria-hidden="true" href="#kraken-here-is-the-new-kraken">#</a></h5>
+<p><img loading="lazy" src="/static/kraken.png" alt="kraken"  />
+</p>
+<p>Here are its stats:</p>
+<ul>
+<li><strong>Health Points</strong>: 12</li>
+<li><strong>Attack Damage</strong>: 1</li>
+<li><strong>Spirit Cost</strong>: 5</li>
+<li><strong>Abilities</strong>: Multi Attack 3</li>
+</ul>
+<h5 id="spider-here-is-the-new-spider"><strong>Spider</strong>: Here is the new spider!<a hidden class="anchor" aria-hidden="true" href="#spider-here-is-the-new-spider">#</a></h5>
+<p><img loading="lazy" src="/static/spider.png" alt="spider"  />
+</p>
+<p>Here are its stats:</p>
+<ul>
+<li><strong>Health Points</strong>: 4</li>
+<li><strong>Attack Damage</strong>: 2</li>
+<li><strong>Spirit Cost</strong>: 4</li>
+<li><strong>Abilities</strong>: Stun 1</li>
+</ul>
+<h3 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h3>
+<p>If you&rsquo;ve read this far, thank you! This devlog was pretty long, and I think I will no longer be showing snippets of code in the future.
+The code, as always, is available on <a href="https://github.com/ThousandthStar/8bit-duels">Github</a>.
+That is all for me, I will see you in the next one!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://thousandthstar.github.io/">ThousandthStar&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
