@@ -19,3 +19,28 @@ url = "https://www.reddit.com/user/ThousandthStar"
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[[menu.main]]
+identifier = "8bd"
+name = "8bit Duels"
+url = "/posts/8bd/"
+weight = 10
+
+[[menu.main]]
+identifier = "news"
+name = "News"
+url = "/posts/news/"
+weight = 10
+
+[params.giscus]
+repo = "ThousandthStar/8bit-duels"
+repoID = "R_kgDOIKptSw"
+category = "Announcements"
+categoryID = "DIC_kwDOIKptS84CVbfW"
+mapping = "pathname"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "top"
+theme = "dark"
+lang = "en"
+loading = "lazy"
