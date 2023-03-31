@@ -33,10 +33,10 @@ url = "/posts/news/"
 weight = 10
 
 [params.giscus]
-repo = "ThousandthStar/8bit-duels"
-repoID = "R_kgDOIKptSw"
+repo = "ThousandthStar/ThousandthStar.github.io"
+repoID = "MDEwOlJlcG9zaXRvcnkzNDc1MzA2ODI="
 category = "Announcements"
-categoryID = "DIC_kwDOIKptS84CVbfW"
+categoryID = "DIC_kwDOFLblus4CVbhj"
 mapping = "pathname"
 reactionsEnabled = "1"
 emitMetadata = "0"
