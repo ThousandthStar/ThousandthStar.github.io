@@ -3,11 +3,10 @@ languageCode = 'en-us'
 title = "ThousandthStar's blog"
 theme = "PaperMod"
 googleAnalytics = "G-ZP55MZZT7E"
-disqusShortname = 'thousandthstar-github-io'
 
 [params.homeInfoParams]
 Title = "Hi there 👋"
-Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels."
+Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels. Contact me on Discord: ThousandthStar#1621"
 
 [[params.socialIcons]]
 name = "github"
@@ -22,3 +21,30 @@ name = "discord"
 url = "https://discord.com/invite/NbBcF4bGU5"
 
 
+[markup.goldmark.renderer]
+unsafe= true
+
+[[menu.main]]
+identifier = "8bd"
+name = "8bit Duels"
+url = "/posts/8bd/"
+weight = 10
+
+[[menu.main]]
+identifier = "news"
+name = "News"
+url = "/posts/news/"
+weight = 10
+
+[params.giscus]
+repo = "ThousandthStar/ThousandthStar.github.io"
+repoID = "MDEwOlJlcG9zaXRvcnkzNDc1MzA2ODI="
+category = "Announcements"
+categoryID = "DIC_kwDOFLblus4CVbhj"
+mapping = "pathname"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "top"
+theme = "dark"
+lang = "en"
+loading = "lazy"
