@@ -6,7 +6,7 @@ googleAnalytics = "G-ZP55MZZT7E"
 
 [params.homeInfoParams]
 Title = "Hi there 👋"
-Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels. Contact me on Discord: ThousandthStar#1621"
+Content = "I'm ThousandthStar, a hobbyist developper. I'm currently working on my game, 8bit Duels. Join the Discord below to chat. You can also follow me on Mastodon for small progress updates."
 
 [[params.socialIcons]]
 name = "github"
