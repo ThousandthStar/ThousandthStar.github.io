@@ -13,10 +13,6 @@ name = "github"
 url = "https://github.com/ThousandthStar"
 
 [[params.socialIcons]]
-name = "mastodon"
-url = "https://mastodon.social/@ThousandthStar"
-
-[[params.socialIcons]]
 name = "discord"
 url = "https://discord.com/invite/NbBcF4bGU5"
 
