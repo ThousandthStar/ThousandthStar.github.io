@@ -1,6 +1,6 @@
 ---
 title: "8bit Duels Part 8 - Final Devlog"
-date: 2023-08-21T21:37:17-04:00
+date: 2023-08-31T21:37:17-04:00
 draft: false
 ---
 
